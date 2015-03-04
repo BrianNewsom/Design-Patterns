@@ -13,9 +13,13 @@ public class TimeoutReport implements Report {
     }
 
     public int getTimeouts(){
-        System.out.println(timeouts + " Tests timed out");
         return timeouts;
     }
+
+    public void printResults(){
+        System.out.println(this.getTimeouts() + " Tests timed out.");
+    }
+
     public void update(boolean pass){
         if(!pass){
             // Check if timeout error

@@ -52,6 +52,14 @@ public class Submission implements AbstractSubmission
             r.update(pass);
         }
     }
+
+    public void printAllReports(){
+        System.out.println("------------PRINTING ALL RESULTS UP TO THIS POINT------------");
+        for(Report r : reports){
+            r.printResults();
+        }
+        System.out.println("-------------------------------------------------------------");
+    }
 	
     public boolean wasTimeoutError()
 	{

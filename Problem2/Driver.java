@@ -6,7 +6,7 @@ public class Driver {
         Submission s = new Submission();
         for (int i = 0 ; i < 10 ; i++){
             s.runTestCase();
-
+            if(i % 5 == 0) s.printAllReports();
         }
     }
 }
