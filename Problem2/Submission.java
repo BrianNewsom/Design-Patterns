@@ -4,12 +4,14 @@
 * A representation of a Submission
 */
 
+import java.util.ArrayList;
 import java.util.Random;
 
-public class Submission
+public class Submission implements AbstractSubmission
 {	
     private Random myRandom;
 	private boolean lastErrorWasTimeout;
+    private static ArrayList<Report> reports = new ArrayList<Report>();
 
     // You may add attributes to this class if necessary
 
@@ -17,6 +19,10 @@ public class Submission
 	{
 	    myRandom = new Random();
 		lastErrorWasTimeout = false;
+        Report timeoutReport = new TimeoutReport(this);
+        Report correctReport = new CorrectReport();
+        attach(timeoutReport);
+        attach(correctReport);
 	}
 
     public void runTestCase()
@@ -27,9 +33,25 @@ public class Submission
 		{
 		    lastErrorWasTimeout = myRandom.nextBoolean();
 		}
-		
+
+        // Notify in pass or fail case
+        notifyReports(passed);
 		// You can add to the end of this method for reporting purposes
 	}
+
+    public void attach(Report r){
+        reports.add(r);
+    }
+
+    public void detach(Report r){
+        reports.remove(r);
+    }
+
+    public void notifyReports(boolean pass){
+        for(Report r : reports){
+            r.update(pass);
+        }
+    }
 	
     public boolean wasTimeoutError()
 	{
