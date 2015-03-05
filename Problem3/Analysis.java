@@ -51,6 +51,25 @@ class LogMD implements Logging
 	}
 }
 
+class AnalysisFactory{
+	public static Logging getLog(String type){
+        Logging logfile; 
+		if (type.equalsIgnoreCase("text")){
+			logfile = new LogText();
+		}
+		else if (type.equalsIgnoreCase("xml")){
+			logfile = new LogXML();
+		}
+		else if (type.equalsIgnoreCase("html"))
+			logfile = new LogHTML();
+		else if (type.equalsIgnoreCase("md"))
+			logfile = new LogMD();
+		else
+			logfile = new LogText();
+		return logfile;	
+	}
+}
+
 class Analysis
 {
 
@@ -63,8 +82,7 @@ class Analysis
 		}
 		String type = args[0];
 		
-		AnalysisFactory factory = new AnalysisFactory();
-		Logging logfile = factory.getLogType(type);
+		Logging logfile = AnalysisFactory.getLog(type);
 		
 		logfile.log("Starting application...");
 
