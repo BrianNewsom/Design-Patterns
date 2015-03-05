@@ -50,7 +50,7 @@ class LogMD implements Logging
 	}
 }
 
-class AnalysisFactory{
+class LogFactory{
 	public static Logging getLog(String type){
         Logging logfile; 
 		if (type.equalsIgnoreCase("xml"))
@@ -67,7 +67,6 @@ class AnalysisFactory{
 
 class Analysis
 {
-
 	public static void main(String[] args)
 	{
 		if (args.length != 1)
@@ -77,7 +76,7 @@ class Analysis
 		}
 		String type = args[0];
 		
-		Logging logfile = AnalysisFactory.getLog(type);
+		Logging logfile = LogFactory.getLog(type);
 		
 		logfile.log("Starting application...");
 
