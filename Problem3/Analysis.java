@@ -1,6 +1,5 @@
 interface Logging
 {
-	public enum LOG_TYPE {TXT, XML, HTML};
 	public void log(String msg);
 }
 
@@ -54,12 +53,8 @@ class LogMD implements Logging
 class AnalysisFactory{
 	public static Logging getLog(String type){
         Logging logfile; 
-		if (type.equalsIgnoreCase("text")){
-			logfile = new LogText();
-		}
-		else if (type.equalsIgnoreCase("xml")){
+		if (type.equalsIgnoreCase("xml"))
 			logfile = new LogXML();
-		}
 		else if (type.equalsIgnoreCase("html"))
 			logfile = new LogHTML();
 		else if (type.equalsIgnoreCase("md"))
