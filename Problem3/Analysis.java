@@ -11,7 +11,7 @@ class LogText implements Logging
 	}
 	public void log(String msg)
 	{	
-		System.out.println("Logging text to file: " + msg);
+		System.out.println(msg);
 	}
 }
 class LogXML implements Logging
@@ -22,7 +22,6 @@ class LogXML implements Logging
 	}
 	public void log(String msg)
 	{	
-		System.out.println("Logging text to file: log.xml" );
 		System.out.println("<xml><msg>"+msg+"</msg></xml>");
 	}
 }
@@ -34,7 +33,6 @@ class LogHTML implements Logging
 	}
 	public void log(String msg)
 	{	
-		System.out.println("Logging HTML to file: log.html" );
 		System.out.println("<html><body>"+msg+"</body></html>");
 	}
 }
@@ -45,7 +43,6 @@ class LogMD implements Logging
 	}
 	public void log(String msg)
 	{
-		System.out.println("Logging new type - markdown to file: log.md" );
 		System.out.println("# "+msg);
 	}
 }
@@ -79,12 +76,8 @@ class Analysis
 		Logging logfile = LogFactory.getLog(type);
 		
 		logfile.log("Starting application...");
-
-		System.out.println("... read in data file to analyze ...");
-		// code...
-		System.out.println("... Clustering data for analysis ...");
-		// code...
-		System.out.println("... Printing analysis results ...");
-		// code...
+		logfile.log("... read in data file to analyze ...");
+		logfile.log("... Clustering data for analysis ...");
+		logfile.log("... Printing analysis results ...");
 	}
 }
