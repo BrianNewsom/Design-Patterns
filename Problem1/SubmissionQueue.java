@@ -20,12 +20,12 @@ public class SubmissionQueue {
         return mySubmissionQueue;
     }
 
-    public static void add(Submission s){
+    public void add(Submission s){
         getSubmissionQueue().myQueue.add(s);
         System.out.println("Added submission to queue: " + s);
     }
 
-    public static Submission process(){
+    public Submission process(){
         // Get next element
         Submission s = getSubmissionQueue().myQueue.poll();
         if(s == null){
