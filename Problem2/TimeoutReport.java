@@ -26,6 +26,8 @@ public class TimeoutReport implements Report {
             boolean timeout = this.submission.wasTimeoutError();
             if(timeout){
                 incTimeouts();
+            } else{
+                System.out.println("Fail but not timeout.");
             }
         }
     }
