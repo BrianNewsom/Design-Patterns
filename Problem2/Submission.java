@@ -19,10 +19,6 @@ public class Submission implements AbstractSubmission
 	{
 	    myRandom = new Random();
 		lastErrorWasTimeout = false;
-        Report timeoutReport = new TimeoutReport(this);
-        Report correctReport = new CorrectReport();
-        attach(timeoutReport);
-        attach(correctReport);
 	}
 
     public void runTestCase()
